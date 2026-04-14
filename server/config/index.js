@@ -57,6 +57,10 @@ const config = {
 
 // Production-specific overrides
 if (config.env === 'production') {
+  if (!process.env.MONGODB_URI) {
+    console.error('⚠️  FATAL: Set MONGODB_URI in production!');
+    process.exit(1);
+  }
   if (config.jwt.secret === 'dev-secret-change-me') {
     console.error('⚠️  FATAL: Set JWT_SECRET in production!');
     process.exit(1);
