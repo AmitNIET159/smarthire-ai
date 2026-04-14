@@ -4,8 +4,8 @@
   "description": "SmartHire AI Backend - Resume & Interview Copilot API",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
