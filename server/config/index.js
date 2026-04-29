@@ -3,7 +3,7 @@
  * Centralizes all config values and provides defaults per environment.
  */
 
-require('dotenv').config();
+require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') });
 
 const config = {
   // ── Common ────────────────────────────────────────────
