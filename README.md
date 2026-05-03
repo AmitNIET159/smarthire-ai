@@ -219,7 +219,7 @@ npm run dev
 
 ### 4. Open in Browser
 
-Visit [http://localhost:3000](http://localhost:3000)
+Visit [https://smarthire-ai-seven.vercel.app](https://smarthire-ai-seven.vercel.app)
 
 ---
 
