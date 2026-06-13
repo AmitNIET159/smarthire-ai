@@ -107,21 +107,22 @@ async function analyzeResumeHandler(req, res, next) {
  */
 async function buildResumeHandler(req, res, next) {
   try {
-    const formData = req.body;
+    const { builderData } = req.body;
 
     // Generate resume content via AI
-    const generated = await buildResume(formData);
+    const generated = await buildResume(builderData);
 
     // Save as a new resume record
     const resume = await Resume.create({
       user: req.user.id,
-      fileName: `${formData.name}_resume_${Date.now()}`,
+      fileName: `${builderData.personalInfo?.name || 'resume'}_resume_${Date.now()}`,
       fileType: 'pdf',
+      builderData,
       generatedResume: generated,
       status: 'built',
     });
 
-    logger.info('Resume built for user: %s', req.user.id);
+    logger.info('Resume built for user: %s (template: %s)', req.user.id, builderData.template || 'modern');
 
     res.status(201).json({
       success: true,
@@ -129,6 +130,7 @@ async function buildResumeHandler(req, res, next) {
       data: {
         id: resume._id,
         generatedResume: resume.generatedResume,
+        builderData: resume.builderData,
       },
     });
   } catch (error) {

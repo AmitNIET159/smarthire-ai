@@ -64,23 +64,20 @@ const analyzeValidation = [
 ];
 
 const buildResumeValidation = [
-  body('name')
+  body('builderData.targetRole')
+    .trim()
+    .notEmpty().withMessage('Target role is required'),
+  body('builderData.personalInfo.name')
     .trim()
     .notEmpty().withMessage('Name is required')
     .escape(),
-  body('email')
+  body('builderData.personalInfo.email')
     .trim()
     .notEmpty().withMessage('Email is required')
     .isEmail().withMessage('Valid email is required'),
-  body('experience')
-    .trim()
-    .notEmpty().withMessage('Experience description is required'),
-  body('skills')
-    .trim()
-    .notEmpty().withMessage('Skills are required'),
-  body('targetRole')
-    .trim()
-    .notEmpty().withMessage('Target role is required'),
+  body('builderData.template')
+    .optional()
+    .isIn(['modern', 'classic', 'minimal', 'bold']).withMessage('Invalid template choice'),
   handleValidation,
 ];
 
