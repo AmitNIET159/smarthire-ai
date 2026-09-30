@@ -12,7 +12,7 @@
 
 **AI-powered career platform** that analyzes resumes, builds professional resumes, and conducts mock interviews with real-time AI feedback.
 
-[Live Demo](#) · [Report Bug](../../issues) · [Request Feature](../../issues)
+[Live Demo](https://smarthire-ai-seven.vercel.app/) · [Report Bug](../../issues) · [Request Feature](../../issues)
 
 </div>
 
